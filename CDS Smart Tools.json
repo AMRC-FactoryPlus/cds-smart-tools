@@ -1,0 +1,331 @@
+{
+  "Smart_Tools/": {
+    "description": "Contains data associated with Smart Tools.",
+    "requirement": "mandatory",
+
+    "<Smart_Tool_Name>/": {
+      "datatype": "String",
+      "description": "A user defined name to identify this Smart Tool.",
+      "requirement": "mandatory",
+
+      "Tool_Info/": {
+        "description": "Contains some basic identifying info about the smart tool.",
+        "requirement": "mandatory",
+        "Cell_ID": {
+          "datatype": "UInt32",
+          "description": "The cell ID is four bytes long specified by four ASCII digits. Range: 0000-9999.",
+          "requirement": "mandatory"
+        },
+        "Channel_ID": {
+          "datatype": "UInt16",
+          "description": "The channel ID is two bytes long specified by two ASCII digits. Range: 00-20.",
+          "requirement": "mandatory"
+        },
+        "Controller_Name": {
+          "datatype": "String",
+          "description": "The controller name is 25 bytes",
+          "requirement": "optional"
+        },
+        "Supplier_Code": {
+          "datatype": "String",
+          "description": "ACT (supplier code for Atlas Copco Tools) specified by three ASCII characters.",
+          "requirement": "optional"
+        },
+        "Open_Protocol_Version": {
+          "datatype": "String",
+          "description": "Open Protocol version. 19 ASCII characters. This version mirrors the IMPLEMENTED version of the Open Protocol and is hence not the same as the version of the specification. This is caused by, for instance, the possibility of implementation done of only a subset of the protocol.",
+          "requirement": "mandatory"
+        },
+        "Controller_Software_Version": {
+          "datatype": "String",
+          "description": "The controller software version. 19 ASCII characters.",
+          "requirement": "optional"
+        },
+        "Tool_Software_Version": {
+          "datatype": "String",
+          "description": "The tool software version. 19 ASCII characters.",
+          "requirement": "mandatory"
+        },
+        "Tool_Serial_Number": {
+          "datatype": "String",
+          "description": "Serial number of tool 14 ASCII characters",
+          "requirement": "mandatory"
+        },
+        "Tool_Number_Of_Tightening": {
+          "datatype": "UInt64",
+          "description": "Total number of tightenings of tool 10 ASCII digits. Max 4294967295",
+          "requirement": "mandatory"
+        },
+        "Last_Calibration_Date": {
+          "datatype": "String",
+          "description": "Last time tool was calibrated 19 ASCII characters. YYYY-MM-DD:HH:MM:SS",
+          "requirement": "mandatory"
+        },
+        "Controller_Serial_Number": {
+          "datatype": "String",
+          "description": "Serial number of controller 10 ASCII characters",
+          "requirement": "optional"
+        },
+        "Calibration_Value": {
+          "datatype": "UInt64",
+          "description": "The tool calibration value is multiplied by 100 and sent as an integer (2 decimals truncated). Six ASCII digits",
+          "requirement": "mandatory"
+        },
+        "Last_Service_Date": {
+          "datatype": "String",
+          "description": "Last time tool was serviced YYYY-MM-DD:HH:MM:SS",
+          "requirement": "mandatory"
+        },
+        "Tightenings_Since_Service": {
+          "datatype": "UInt64",
+          "description": "The number of tightenings since last service is specified by 10 ASCII digits. Max 4294967295.",
+          "requirement": "mandatory"
+        },
+        "Tool_Type": {
+          "datatype": "UInt16",
+          "description": "The tool type is specified by 2 ASCII digits: 00=No Tool, 01=S-tool, 02=DS-tool, 03=Ref. transducer, 04=ST-tool, 05=EP-tool, 06=ETX-tool, 07=SL-tool, 08=DL-tool, 09=IRC Offline, 10=STB-tool, 11=QST-tool, 12=STT-tool, 13=STwrench, 14 = ES-tool",
+          "requirement": "mandatory"
+        },
+        "Motor_Size": {
+          "datatype": "UInt16",
+          "description": "The motor size is specified by 2 ASCII digits, range 00-99. 00 = no motor, 01-99 = motor size xx in Atlas Copco nomenclature, or motor size = 10xx in Atlas Copco nomenclature (certain numbers correspond to 2 different motor sizes, for example 62 for both motor size 62",
+          "requirement": "mandatory"
+        },
+        "Open_End_Data": {
+          "datatype": "UInt32",
+          "description": "The open end data is specified by 3 ASCII digits. The first digit represents the 'use open end': 1=true, 0=false. The second digit indicates the tightening direction: 0=CW, 1=CCW. The third digit indicates motor rotation: 0=normal, 1=inverted.",
+          "requirement": "optional"
+        },
+        "Tool_Max_Torque": {
+          "datatype": "UInt64",
+          "description": "The tool max torque value is multiplied by 100 and sent as an integer (2 decimals truncated). Six ASCII digits.",
+          "requirement": "optional"
+        },
+        "Gear_Ratio": {
+          "datatype": "UInt64",
+          "description": "The gear ratio value is multiplied by 100 and sent as an integer (2 decimals truncated). Six ASCII digits.",
+          "requirement": "optional"
+        },
+        "Tool_Full_Speed": {
+          "datatype": "UInt64",
+          "description": "The tool full speed value is multiplied by 100 and sent as an integer (2 decimals truncated). Six ASCII digits.",
+          "requirement": "optional"
+        },
+        "Primary_Tool": {
+          "datatype": "UInt16",
+          "description": "Primary tool. The primary tool is two byte-long and specified by two ASCII digits. 01=Cable (invalid for IRC-controller), 02=IRC-B, 03=IRC-W",
+          "requirement": "optional"
+        },
+        "Tool_Model": {
+          "datatype": "String",
+          "description": "12 ASCII characters with padding at the end of the string if needed. The padding is done with spaces.",
+          "requirement": "optional"
+        }
+      },
+
+
+      "Tightening_Result/": {
+        "description": "Contains data about individual tightenings.",
+        "requirement": "mandatory",
+        "Torque_Controller_Name": {
+          "datatype": "String",
+          "description": "The controller name is 25 bytes long and is specified by 25 ASCII characters.",
+          "requirement": "mandatory"
+        },
+        "VIN_Number": {
+          "datatype": "String",
+          "description": "The VIN (Vehicle ID - identifies the tightening result) number is 25 bytes long and is specified by 25 ASCII characters.",
+          "requirement": "mandatory"
+        },
+        "Job_ID": {
+          "datatype": "UInt16",
+          "description": "The Job ID is two bytes long and specified by two ASCII digits. Range: 00-99",
+          "requirement": "mandatory"
+        },
+        "Parameter_Set_ID": {
+          "datatype": "UInt32",
+          "description": "The parameter set ID is three bytes long and specified by three ASCII digits. Range: 000-999.",
+          "requirement": "mandatory"
+        },
+        "Batch_Size": {
+          "datatype": "UInt32",
+          "description": "This parameter gives the total number of tightening in the batch. The batch size is four bytes long and specified by four ASCII digits. Range: 0000-9999.",
+          "requirement": "mandatory"
+        },
+        "Batch_Counter": {
+          "datatype": "UInt32",
+          "description": "The batch counter information is four bytes long specifying and specified by four ASCII digits. Range: 0000-9999.",
+          "requirement": "mandatory"
+        },
+        "Tightening_Status": {
+          "datatype": "UInt8",
+          "description": "The tightening status is one byte long and specified by one ASCII digit. 0=tightening NOK, 1=tightening OK.",
+          "requirement": "mandatory"
+        },
+        "Torque_Status": {
+          "datatype": "UInt8",
+          "description": "Torque status 0=Low, 1=OK, 2=High",
+          "requirement": "mandatory"
+        },
+        "Angle_Status": {
+          "datatype": "UInt8",
+          "description": "Angle status 0=Low, 1=OK, 2=High",
+          "requirement": "mandatory"
+        },
+        "Torque_Min_Limit": {
+          "datatype": "UInt64",
+          "description": "The torque min limit is multiplied by 100 and sent as an integer (2 decimals truncated). It is six bytes long and is specified by six ASCII digits.",
+          "requirement": "mandatory"
+        },
+        "Torque_Max_Limit": {
+          "datatype": "UInt64",
+          "description": "The torque max limit is multiplied by 100 and sent as an integer (2 decimals truncated). It is six bytes long and is specified by six ASCII digits.",
+          "requirement": "mandatory"
+        },
+        "Torque_Final_Target": {
+          "datatype": "UInt64",
+          "description": "The torque final target is multiplied by 100 and sent as an integer (2 decimals truncated). It is six bytes long and is specified by six ASCII digits.",
+          "requirement": "mandatory"
+        },
+        "Torque": {
+          "datatype": "UInt64",
+          "description": "The torque value is multiplied by 100 and sent as an integer (2 decimals truncated). It is six bytes long and is specified by six ASCII digits.",
+          "requirement": "mandatory"
+        },
+        "Angle_Min": {
+          "datatype": "UInt64",
+          "description": "The angle min value in degrees. Each turn represents 360 degrees. It is five bytes long and specified by five ASCII digits. Range: 00000-99999.",
+          "requirement": "mandatory"
+        },
+        "Angle_Max": {
+          "datatype": "UInt64",
+          "description": "The angle max value in degrees. Each turn represents 360 degrees. It is five bytes long and specified by five ASCII digits. Range: 00000-99999.",
+          "requirement": "mandatory"
+        },
+        "Final_Angle_Target": {
+          "datatype": "UInt64",
+          "description": "The target angle value in degrees. Each turn represents 360 degrees. It is five bytes long and specified by five ASCII digits. Range: 00000-99999.",
+          "requirement": "mandatory"
+        },
+        "Angle": {
+          "datatype": "UInt64",
+          "description": "The turning angle value in degrees. Each turn represents 360 degrees. It is five bytes long and specified by five ASCII digits. Range: 00000-99999.",
+          "requirement": "mandatory"
+        },
+        "Time_Stamp": {
+          "datatype": "String",
+          "description": "Time stamp for each tightening. It is 19 bytes long and is specified by 19 ASCII characters (YYYY-MM-DD:HH:MM:SS).",
+          "requirement": "optional"
+        },
+        "Last_Parameter_Set_Change": {
+          "datatype": "String",
+          "description": "Time stamp for the last change in the current parameter set settings. It is 19 bytes long and is specified by 19 ASCII characters (YYYY-MM-DD:HH:MM:SS).",
+          "requirement": "optional"
+        },
+        "Batch_Status": {
+          "datatype": "UInt8",
+          "description": "The batch status is specified by one ASCII character. 0=batch NOK (batch not completed), 1=batch OK, 2=batch not used.",
+          "requirement": "optional"
+        },
+        "Tightening_ID": {
+          "datatype": "UInt64",
+          "description": "The tightening ID is a unique ID for each tightening result. It is incremented after each tightening. 10 ASCII digits. Max 4294967295",
+          "requirement": "optional"
+        }
+      },
+
+
+      "Alarm/": {
+        "description": "Contains data from alarm messages.",
+        "requirement": "mandatory",
+        "Error_Code": {
+          "datatype": "String",
+          "description": "The error code is specified by 4 ASCII characters. Example E851 or 1010.",
+          "requirement": "mandatory"
+        },
+        "Controller_Ready_Status": {
+          "datatype": "UInt8",
+          "description": "Controller ready status 1=OK, 0=NOK",
+          "requirement": "mandatory"
+        },
+        "Tool_Ready_Status": {
+          "datatype": "UInt8",
+          "description": "Tool ready status 1=OK, 0=NOK",
+          "requirement": "mandatory"
+        },
+        "Time_Stamp": {
+          "datatype": "String",
+          "description": "Time stamp for the alarm. 19 ASCII characters. YYYY-MM-DD:HH:MM:SS",
+          "requirement": "mandatory"
+        },
+        "Alarm_Text": {
+          "datatype": "String",
+          "description": "Alarm text. 50 ASCII characters",
+          "requirement": "mandatory"
+        }
+      },
+
+
+      "Commands/": {
+        "description": "Contains data from alarm messages.",
+        "requirement": "optional",
+        "Disable_Tool": {
+          "datatype": "Boolean",
+          "description": "Disable tool command.",
+          "requirement": "optional"
+        },
+        "Enable_Tool": {
+          "datatype": "Boolean",
+          "description": "Enable tool command",
+          "requirement": "optional"
+        },
+        "Flash_Tool_Light": {
+          "datatype": "Boolean",
+          "description": "Command to make the green light on the tool flash until the operator pushes the tool trigger.",
+          "requirement": "optional"
+        },
+        "Text_Duration": {
+          "datatype": "UInt32",
+          "description": "Time for the text to be displayed on graphical user interface, in seconds. Four ASCII digits, range: 0000-9999",
+          "requirement": "optional"
+        },
+        "Removal_Condition": {
+          "datatype": "UInt8",
+          "description": "Removal condition of text on graphical user interface, 0= acknowledge or wait expiration time 1= acknowledge",
+          "requirement": "optional"
+        },
+        "Line_1": {
+          "datatype": "String",
+          "description": "1st line of text (header) on graphical user interface, 25 ASCII characters",
+          "requirement": "optional"
+        },
+        "Line_2": {
+          "datatype": "String",
+          "description": "2nd line of text on graphical user interface, 25 ASCII characters",
+          "requirement": "optional"
+        },
+        "Line_3": {
+          "datatype": "String",
+          "description": "3rd line of text on graphical user interface, 25 ASCII characters",
+          "requirement": "optional"
+        },
+        "Line_4": {
+          "datatype": "String",
+          "description": "4th line of text on graphical user interface, 25 ASCII characters",
+          "requirement": "optional"
+        },
+        "Set_Parameter": {
+          "datatype": "UInt32",
+          "description": "Select Parameter set (PSET). Parameter set number represented by 3 ASCII digits (range 000 to 999).",
+          "requirement": "optional"
+        }
+      },
+
+
+      "User_Defined/": {
+        "description": "this is where tags and variables that don't fit into the rest of this Common Data Structure can be included. The structure here is flexible, but the user should try to keep it logical and easy to navigate. The variable/folder names created within this type should use the `Pascal_Snake_Case` naming convention with capital letters for all first letters of words with underscore delimiters for more than one word or be inherited from the device/protocol in use. Additionally, all folder structures must be delimited with a `/` character",
+        "requirement": "optional"
+      }
+    }
+  }
+}
